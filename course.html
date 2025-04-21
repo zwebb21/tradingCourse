@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Course Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="flex flex-col md:flex-row bg-gray-100 min-h-screen">
+
+
+    <!-- navigation starts here - it is a side bar .  -->
+    <aside id="sidebar" class="w-full md:w-1/4 bg-white shadow-md p-5 hidden md:block sticky top-0 h-screen overflow-y-auto">
+        <h2 class="text-3xl font-bold mb-4 text-center text-blue-500">Course Navigation</h2>
+        <nav class="space-y-3 text-3xl p-5" id="sidebarNav">
+          
+          <!-- Home -->
+          <a href="test.html" class="block hover:text-blue-500 font-bold">🏠 Home</a>
+      
+          <!-- Section Template -->
+          <div>
+            <button onclick="toggleAccordion('introSub', this)" class="w-full text-left hover:text-blue-500 flex justify-between items-center font-bold">
+              📘 Introduction
+              <span class="toggle-icon text-base">+</span>
+            </button>
+            <div id="introSub" class="ml-4 mt-2 hidden space-y-1 text-base text-gray-600 font-bold">
+              <a href="#whatToExpect" class="block hover:text-blue-500">What to Expect</a>
+              <a href="#" class="block hover:text-blue-500">Overview Page</a>
+              <a href="#" class=" text-red-400 	
+              line-through  block hover:text-blue-500">Paid Version - RoadMap</a>
+              <a href="#" class=" text-red-400 	
+              line-through  block hover:text-blue-500">Paid Version- How i started</a>
+            </div>
+          </div>
+      
+          <div>
+            <button onclick="toggleAccordion('lesson1Sub', this)" class="w-full text-left hover:text-blue-500 flex justify-between items-center font-bold">
+              💡 Lesson 1: Basics
+              <span class="toggle-icon text-base">+</span>
+            </button>
+            <div id="lesson1Sub" class="ml-4 mt-2 hidden space-y-1 text-base text-gray-600 font-bold">
+              <a href="#lesson1" class="block hover:text-blue-500">Video Lesson</a>
+              <a href="lesson1-summary.html" class="block hover:text-blue-500">Quick Summary</a>
+              <a href="lesson1-practice.html" class="block hover:text-blue-500">Practice Page</a>
+            </div>
+          </div>
+      
+          <div>
+            <button onclick="toggleAccordion('lesson2Sub', this)" class="w-full text-left hover:text-blue-500 flex justify-between items-center font-bold">
+              📊 Lesson 2: Charts
+              <span class="toggle-icon text-base">+</span>
+            </button>
+            <div id="lesson2Sub" class="ml-4 mt-2 hidden space-y-2 text-base text-gray-600 font-bold">
+              <a href="#lesson2" class="block hover:text-blue-500">Chart Basics</a>
+              <a href="#realExamples" class="block hover:text-blue-500">Real Examples</a>
+            </div>
+          </div>
+      
+          <div>
+            <button onclick="toggleAccordion('lesson3Sub', this)" class="w-full text-left hover:text-blue-500 flex justify-between items-center font-bold">
+              🛠️ Lesson 3: Tools
+              <span class="toggle-icon text-base">+</span>
+            </button>
+            <div id="lesson3Sub" class="ml-4 mt-2 hidden space-y-2 text-base text-gray-600 font-bold">
+              <a href="#lesson3" class="block hover:text-blue-500">Tool Overview</a>
+              <a href="lesson3-downloads.html" class="block hover:text-blue-500">Download Links</a>
+              <a href="lesson3-setups.html" class="block hover:text-blue-500">Recommended Setups</a>
+            </div>
+          </div>
+      
+          <div>
+            <button onclick="toggleAccordion('bonusSub', this)" class="w-full text-left hover:text-blue-500 flex justify-between items-center font-bold">
+              🎁 Bonus Tips
+              <span class="toggle-icon text-base">+</span>
+            </button>
+            <div id="bonusSub" class="ml-4 mt-2 hidden space-y-1 text-base text-gray-600 font-bold">
+              <a href="#bonus" class="block hover:text-blue-500">Mindset</a>
+              <a href="bonus-tools.html" class="block hover:text-blue-500">Bonus Tools</a>
+            </div>
+          </div>
+      
+        </nav>
+      </aside>
+      
+  
+
+  <!-- Mobile Toggle -->
+  <button onclick="toggleSidebar()" class="md:hidden p-4 bg-yellow-400 font-bold">☰ Menu</button>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-6">
+    <section id="intro" class="bg-white px-6 py-12 md:px-12 slide-in mb-10">
+        <div class="max-w-4xl mx-auto">
+          <h1 class="text-3xl font-bold mb-4 text-gray-900">📘 Introduction</h1>
+      
+                <h3  id="whatToExpect" class="text-2xl font-bold mb-3 text-blue-500"> What to Expect </h3>
+          <p class="text-lg text-gray-700 leading-relaxed mb-8">
+            Welcome to the course! Whether you're brand new to trading or just tired of all the overcomplicated YouTube videos, you're in the right place.
+            <br /><br />
+            This course is built differently — no fancy jargon, no get-rich-quick BS. Just real strategies, explained in a simple and visual way from someone who’s been exactly where you are.
+            <br /><br />
+            My goal is to help you build a solid foundation, learn at your own pace, and gain the confidence to actually apply what you learn. By the end, you'll not only understand how trading works — you'll know how to approach the markets with clarity, discipline, and purpose.
+            <br /><br />
+            Let’s take this step-by-step. You got this. 👊
+          </p>
+      
+          <!-- Starter Checklist -->
+          <div class="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-lg mb-6">
+            <h3 class="font-semibold text-blue-700 mb-2">🧰 What You’ll Need</h3>
+            <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
+              <li>✅ A notepad or journal (digital or physical)</li>
+              <li>✅ A free TradingView account</li>
+              <li>✅ Internet access and about 15–30 minutes per lesson</li>
+              <li>✅ An open mind — and the patience to learn a skill that pays</li>
+            </ul>
+          </div>
+      
+          <!-- Start Button -->
+          <div class="text-center">
+            <a href="#lesson1" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-lg transition">
+              🚀 Start Lesson 1
+            </a>
+          </div>
+        </div>
+      </section>
+      
+
+    <section id="lesson1" class="mb-20">
+      <h2 class="text-2xl font-bold mb-2">💡 Lesson 1: Understanding the Basics</h2>
+                    <h3 class="text-1xl font-bold mb-2">Zarius Curated - Youtube Playlist</h3>
+      <div class="aspect-w-16 aspect-h-9 mb-4">
+        <iframe  id="video-container"   width="1920" height="1080" src="https://www.youtube.com/embed/videoseries?si=MPl701-LsHqEc8n_&amp;list=PLg8JDZ4B9k6lau5DezXQhncpbxCjXRk_D" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      
+      <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-lg shadow-md mt-6 fade-in">
+        <span class="inline-block bg-yellow-300 text-black font-semibold px-3 py-1 rounded-full text-xs mb-3">
+          FREE RESOURCE
+        </span>
+      
+        <p class="text-gray-800 text-base leading-relaxed">
+          🎓 <span class="font-semibold text-yellow-600">Curated by Zarius:</span> 
+          This is a <span class="font-bold text-green-600">free YouTube playlist</span> I personally handpicked for traders and investors.
+          It’s my way of giving back to those who follow and support me.
+          <br><br>
+          The real benefit? <span class="italic text-gray-900">I already went through the painfully long hours of tutorials</span> and sorted out the gems —
+          <span class="font-semibold text-blue-600">so you don’t have to.</span> Just press play and start learning what actually works.
+            <br><br>     <span class="font-semibold text-red-500">FYI. the videos are not in any specific order.So watch however you please.</span> <br>
+        
+        
+        </p>
+      </div>
+      
+      
+
+
+
+    </section>
+
+
+
+
+    <section id="lesson2" class="bg-white px-6 py-12 md:px-12 slide-in">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl font-bold mb-6 text-gray-900">📊 Lesson 2: Reading Charts</h2>
+          <p class="text-lg text-gray-700 mb-10">
+            In this module, we’ll dive deep into understanding chart patterns. You’ll learn to read candlesticks, identify support and resistance levels, and use volume to confirm trends—core skills every trader needs.
+          </p>
+      
+          <div class="flex flex-col md:flex-row gap-10 items-start">
+            
+            <!-- Left: Toggle Topics -->
+            <div class="md:w-1/2 space-y-4" id="chartTopics">
+              <!-- Toggle 1 -->
+              <div class="border rounded-lg shadow">
+                <button class="w-full text-left px-6 py-4 font-semibold text-lg flex justify-between items-center" onclick="toggleSection('toggle1')">
+                  🕯️ Candlestick Patterns
+                  <span>+</span>
+                </button>
+                <div id="toggle1" class="hidden px-6 pb-4 text-gray-700 text-sm">
+                  Learn how to recognize bullish and bearish candlesticks like doji, engulfing, hammers, and more. These visual signals help you make quick trading decisions.
+                    <span class="text-1xl font-semibold text-purple-800"><a href="support-resistance.html">View-Free Version </a></span>
+                </div>
+
+
+                    
+
+
+              </div>
+
+
+              <!-- pro feature -preview  -->
+              <!-- Toggle 2 -->
+              <div class="border rounded-lg shadow">
+                <button class="w-full text-left px-6 py-4 font-semibold text-lg flex justify-between items-center" onclick="toggleSection('toggle2')">
+                  📈 Support & Resistance
+                  <span>+</span>
+                </button>
+                <div id="toggle2" class="hidden px-6 pb-4 text-gray-700 text-sm">
+                  Understand how to spot levels where price reacts. These zones often show you where to enter or exit a trade.
+                  <span class="text-1xl font-semibold text-purple-800"><a href="support-resistance.html">View-Free Version </a></span>
+                </div> 
+              </div>
+      
+              <!-- Toggle 3 -->
+              <div class="border rounded-lg shadow">
+                <button class="w-full text-left px-6 py-4 font-semibold text-lg flex justify-between items-center" onclick="toggleSection('toggle3')">
+                  📊 Volume & Confirmation
+                  <span>+</span>
+                </button>
+                <div id="toggle3" class="hidden px-6 pb-4 text-gray-700 text-sm">
+                  Volume tells you whether a price move is strong or weak. We’ll show how to read this alongside your charts to avoid false breakouts.
+                  <span class="text-1xl font-semibold text-purple-800"><a href="#">View-Free Version </a></span>
+                </div>
+              </div> 
+            </div>
+            <!-- pro preview -->
+            <!-- Right: TradingView Embed -->
+            <div class="md:w-1/2 w-full">
+              <div class="rounded-lg overflow-hidden shadow-lg border-2 border-yellow-400">
+                <iframe
+                  src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_XXXXXXXX&symbol=NASDAQ:AAPL&interval=1D&symboledit=1&saveimage=1&toolbarbg=f1f3f6&studies=[]&theme=light&style=1&timezone=Etc%2FUTC"
+                  width="100%"
+                  height="400"
+                  frameborder="0"
+                  allowtransparency="true"
+                  scrolling="no"
+                  allowfullscreen
+                  title="TradingView Live Chart"
+                ></iframe>
+              </div>
+              <p class="text-sm text-gray-500 mt-2 italic text-center">Live chart powered by TradingView.</p>
+            </div>
+          </div>
+
+          <section id="pro-preview" class="bg-yellow-50 px-6 py-12 md:px-12 slide-in">
+            <div class="max-w-4xl mx-auto text-center" id="realExamples">
+              <h2 class="text-3xl font-bold mb-4 text-gray-900">🔒 Want More?</h2>
+              <p class="text-lg text-gray-700 mb-10">
+                The free lessons gave you the foundation. Now it's time to level up. The full course includes in-depth strategy breakdowns, case studies, and exclusive tools I actually use.
+              </p>
+          
+              <!-- Locked Lesson Preview with Badge -->
+              <div class="relative bg-white border border-yellow-300 shadow-md rounded-lg p-6 max-w-xl mx-auto blur-card opacity-0 translate-y-4 transition duration-700 ease-out">
+                
+                <!-- 🔐 Locked Badge -->
+                <span class="absolute top-3 left-3 bg-yellow-300 text-yellow-900 text-xs font-bold px-3 py-1 rounded-full shadow">
+                  🔐 Locked
+                </span>
+          
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">📉 Pro Lesson: Trade Entry Timing</h3>
+                <p class="text-sm text-gray-600">
+                  Discover how I time entries using volume spikes, confirmation candles, and psychological levels. This lesson includes chart markups and video breakdowns.
+                </p>
+              </div>
+          
+              <!-- Call to Action -->
+              <div class="mt-8" id="">
+                <a href="full-course.html" class="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-lg transition">
+                  🚀 Get Full Course Access
+                </a>
+                <p class="text-sm text-gray-500 mt-2 italic">Upgrade anytime. Instant access, lifetime value.</p>
+              </div>
+            </div>
+          </section>
+          
+
+        </div>
+      </section>
+      
+
+
+
+
+    <section id="lesson3" class="bg-gray-50 px-6 py-12 md:px-12 slide-in">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl font-bold mb-6 text-gray-900">🛠️ Lesson 3: Tools of the Trade</h2>
+          <p class="text-lg text-gray-700 mb-10">
+            Here’s your trading toolbox. These platforms and apps are my go-to’s for analysis, execution, and tracking. I’ll show you how to use them so you don’t get lost in the features.
+          </p>
+      
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- TradingView -->
+            <div class="bg-white shadow-md rounded-lg p-5 text-center">
+              <img src="https://www.freelogovectors.net/wp-content/uploads/2021/12/tradingviewlogo-freelogovectors.net_.png" alt="TradingView" class="h-16 mx-auto mb-3 object-contain">
+              <h3 class="font-semibold text-lg mb-1">TradingView</h3>
+              <p class="text-sm text-gray-600">Charting, indicators, and drawing tools — all in one web-based platform.</p>
+              <h3 class="font-semibold text-lg mb-1 text-blue-500"> 🛠️  Charting software</h3>
+            </div>
+
+      
+            <!-- ThinkOrSwim -->
+            <div class="bg-white shadow-md rounded-lg p-5 text-center">
+              <img src="https://logodownload.org/wp-content/uploads/2021/05/robinhood-logo.png" alt="Robinhood" class="h-16 mx-auto mb-3 object-contain">
+              <h3 class="font-semibold text-lg mb-1">RobinHood</h3>
+              <p class="text-sm text-gray-600">Advanced desktop and Mobile  trading software for real-time analysis and execution.</p>
+              <h3 class="font-semibold text-lg mb-1 text-blue-500">Stock Brokerage Account</h3>
+            </div>
+            <!-- Notion -->
+            <div class="bg-white shadow-md rounded-lg p-5 text-center">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png" alt="Notion" class="h-16 mx-auto mb-3 object-contain">
+              <h3 class="font-semibold text-lg mb-1">Notion</h3>
+              <p class="text-sm text-gray-600">My favorite tool for journaling, logging trades, and keeping strategies organized.</p>
+              <h3 class="font-semibold text-lg mb-1 text-blue-500">Journaling & analysis</h3>
+            
+            </div>
+          </div>
+        </div>
+      </section>
+      
+
+
+    <section id="bonus" class="bg-white px-6 py-12 md:px-12 slide-in">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold mb-6 text-gray-900">🎁 Bonus: Tips & Next Steps</h2>
+          <p class="text-lg text-gray-700 mb-10">
+            Here’s how to stay on track after the course. This section is all about applying what you learned, protecting your mindset, and leveling up with purpose.
+          </p>
+      
+          <div class="bg-white shadow-md rounded-lg p-5 text-center mb-8">
+            <img src="https://bpcdn.co/packs/media/images/32fe5cbb0db635529071.svg" alt="Robinhood" class="h-16 mx-auto mb-3 object-contain">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Investopedia_Logo.svg/2560px-Investopedia_Logo.svg.png" alt="investopedia" class="h-16 mx-auto mb-3 object-contain">
+            <p class="text-sm text-gray-600">The Best Free Online resource for trading and trading pyschology</p>
+            <h3 class="font-semibold text-lg mb-1 text-blue-500">Online Learning Resource</h3>
+          </div>
+
+
+          <div class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-lg shadow-md mb-8">
+            <h3 class="text-xl font-semibold mb-2">🧭 Your Trader Roadmap</h3>
+            <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+              <li>✅ Finish all video lessons and toggle tips</li>
+              <li>✅ Start a trade journal (I recommend Notion or Google Sheets)</li>
+              <li>✅ Practice on a demo account (paper trading)</li>
+              <li>✅ Set rules: max daily loss, position size, stop loss</li>
+              <li>✅ Rewatch the strategy section once a week</li>
+              <li>✅ Join a trading community or get accountability <p style="color:green">"you could join ours...."</p></li>
+            </ul>
+          </div>
+      
+          <div class="space-y-4">
+            <!-- Bonus Tip Toggles from earlier (reuse toggle6 to toggle8) -->
+            <!-- Already included above, just style to match the new vibe -->
+          </div>
+        </div>
+      </section>
+      
+
+
+    <footer class="text-center mt-16 text-sm text-gray-500">
+      &copy; 2025 Chris Walker. All rights reserved.
+    </footer>
+
+<!-- scripts belong here  -->
+
+<script src="dropdown.js"></script>
+<script src="sidebar.js"></script>
+<script src="toggle.js"></script>
+<script src="accordion.js"></script>
+
+
+  </main>
+</body>
+</html>

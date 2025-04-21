@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mars Rover Photos - Curiosity</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">    <!-- Here is the link to bootstrap here-->
+</head>
+<body class="bg-dark text-light">  <!-- add a bg-dark class to the enter document . -->
+
+  <div class="container py-5">
+    <h1 class="text-center mb-4">Mars Rover Photos (Curiosity)</h1>  <!-- h1 size title . -->
+    <div id="sol-info" class="text-center mb-3 fs-5"></div>
+    <div id="photos" class="row gy-4 justify-content-center"></div>
+    
+    <div class="d-flex justify-content-center mt-5">   <!--Here we create the div for the buttons.-->
+      <button id="prevBtn" class="btn btn-outline-light me-3">Previous Sol</button>   <!-- here we have the previous btn -->
+      <button id="nextBtn" class="btn btn-outline-light">Next Sol</button>   <!-- here we have the next BTn -->
+    </div>
+  </div>
+
+  <script>
+    const photosDiv = document.getElementById('photos');
+    const solInfo = document.getElementById('sol-info');
+    let currentSol = 1000;
+
+    async function fetchPhotos(sol) {
+      photosDiv.innerHTML = '<div class="text-center">Loading...</div>';
+      solInfo.textContent = `Sol ${sol}`;
+
+      const apiUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${sol}&api_key=DEMO_KEY`;
+
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        displayPhotos(data.photos);
+      } catch (error) {
+        photosDiv.innerHTML = `<div class="text-danger text-center">Failed to load photos.</div>`;
+        console.error(error);
+      }
+    }
+
+    function displayPhotos(photos) {
+      photosDiv.innerHTML = '';
+
+      if (photos.length === 0) {
+        photosDiv.innerHTML = '<div class="text-center">No photos found for this Sol.</div>';
+        return;
+      }
+
+      photos.slice(0, 10).forEach(photo => {
+        const col = document.createElement('div');
+        col.className = 'col-md-4 col-lg-3';
+        col.innerHTML = `
+          <div class="card bg-secondary h-100">
+            <img src="${photo.img_src}" class="card-img-top" alt="Mars photo">
+            <div class="card-body">
+              <h6 class="card-title">${photo.camera.full_name}</h6>
+              <p class="card-text small">Earth date: ${photo.earth_date}</p>
+            </div>
+          </div>
+        `;
+        photosDiv.appendChild(col);
+      });
+    }
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      currentSol = Math.max(0, currentSol - 1);
+      fetchPhotos(currentSol);
+    });
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      currentSol++;
+      fetchPhotos(currentSol);
+    });
+
+    // Initial fetch
+    fetchPhotos(currentSol);
+  </script>
+
+</body>
+</html>

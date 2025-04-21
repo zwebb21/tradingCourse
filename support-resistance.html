@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Support & Resistance</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex flex-col md:flex-row bg-gray-100 min-h-screen">
+
+  <!-- Sidebar navigation -->
+  <aside id="sidebar" class="w-full md:w-1/4 bg-white shadow-md p-5 hidden md:block sticky top-0 h-screen overflow-y-auto">
+    <h2 class="text-3xl font-bold mb-4 text-center text-blue-500">Course Navigation</h2>
+    <nav class="space-y-3 text-3xl p-5" id="sidebarNav">
+      
+      <!-- Home -->
+      <a href="test.html" class="block hover:text-blue-500 font-bold">🏠 Home</a>
+  
+      <!-- Section Template -->
+      <div>
+        <button onclick="toggleAccordion('introSub', this)" class="w-full text-left hover:text-blue-500 flex justify-between items-center font-bold">
+          📘 Introduction
+          <span class="toggle-icon text-base">+</span>
+        </button>
+        <div id="introSub" class="ml-4 mt-2 hidden space-y-1 text-base text-gray-600 font-bold">
+          <a href="#whatToExpect" class="block hover:text-blue-500">What to Expect</a>
+          <a href="#" class="block hover:text-blue-500">Overview Page</a>
+          <a href="#" class=" text-red-400 	
+          line-through  block hover:text-blue-500">Paid Version - RoadMap</a>
+          <a href="#" class=" text-red-400 	
+          line-through  block hover:text-blue-500">Paid Version- How i started</a>
+        </div>
+      </div>
+  
+      <div>
+        <button onclick="toggleAccordion('lesson1Sub', this)" class="w-full text-left hover:text-blue-500 flex justify-between items-center font-bold">
+          💡 Lesson 1: Basics
+          <span class="toggle-icon text-base">+</span>
+        </button>
+        <div id="lesson1Sub" class="ml-4 mt-2 hidden space-y-1 text-base text-gray-600 font-bold">
+          <a href="#lesson1" class="block hover:text-blue-500">Video Lesson</a>
+          <a href="lesson1-summary.html" class="block hover:text-blue-500">Quick Summary</a>
+          <a href="lesson1-practice.html" class="block hover:text-blue-500">Practice Page</a>
+        </div>
+      </div>
+  
+      <div>
+        <button onclick="toggleAccordion('lesson2Sub', this)" class="w-full text-left hover:text-blue-500 flex justify-between items-center font-bold">
+          📊 Lesson 2: Charts
+          <span class="toggle-icon text-base">+</span>
+        </button>
+        <div id="lesson2Sub" class="ml-4 mt-2 hidden space-y-2 text-base text-gray-600 font-bold">
+          <a href="#lesson2" class="block hover:text-blue-500">Chart Basics</a>
+          <a href="#realExamples" class="block hover:text-blue-500">Real Examples</a>
+        </div>
+      </div>
+  
+      <div>
+        <button onclick="toggleAccordion('lesson3Sub', this)" class="w-full text-left hover:text-blue-500 flex justify-between items-center font-bold">
+          🛠️ Lesson 3: Tools
+          <span class="toggle-icon text-base">+</span>
+        </button>
+        <div id="lesson3Sub" class="ml-4 mt-2 hidden space-y-2 text-base text-gray-600 font-bold">
+          <a href="#lesson3" class="block hover:text-blue-500">Tool Overview</a>
+          <a href="lesson3-downloads.html" class="block hover:text-blue-500">Download Links</a>
+          <a href="lesson3-setups.html" class="block hover:text-blue-500">Recommended Setups</a>
+        </div>
+      </div>
+  
+      <div>
+        <button onclick="toggleAccordion('bonusSub', this)" class="w-full text-left hover:text-blue-500 flex justify-between items-center font-bold">
+          🎁 Bonus Tips
+          <span class="toggle-icon text-base">+</span>
+        </button>
+        <div id="bonusSub" class="ml-4 mt-2 hidden space-y-1 text-base text-gray-600 font-bold">
+          <a href="#bonus" class="block hover:text-blue-500">Mindset</a>
+          <a href="bonus-tools.html" class="block hover:text-blue-500">Bonus Tools</a>
+        </div>
+      </div>
+  
+    </nav>
+  </aside>
+  
+
+  <main class="flex-1 p-6 text-center container-fluid">
+<section id="support" class="bg-white p-8 mb-12 rounded shadow">
+  <h2 class="text-3xl font-bold mb-4">📈 Support & Resistance</h2>
+  <p class="text-gray-700 mb-6">Support and Resistance are foundational concepts in technical analysis. They help traders understand where price may pause, reverse, or break through based on past price behavior.</p>
+
+  <!-- Key Concept: Support -->
+  <div class="bg-gray-50 p-4 mb-4 rounded shadow-md w-1/2">
+    <h3 class="text-xl font-semibold text-blue-600 mb-2">🔽 What is Support?</h3>
+    <p class="text-gray-700">Support is a price level where a falling asset tends to find buying interest strong enough to halt or reverse a downtrend. It is often identified by multiple touches without breaking below.</p>
+  </div>
+
+  <!-- Key Concept: Resistance -->
+  <div class="bg-gray-50 p-4 mb-4 rounded shadow-md w-1/2">
+    <h3 class="text-xl font-semibold text-red-600 mb-2">🔼 What is Resistance?</h3>
+    <p class="text-gray-700">Resistance is a price level where an uptrend is expected to pause due to a concentration of selling. It often marks areas where traders previously sold off an asset.</p>
+  </div>
+
+  <!-- Key Concept: Flip Zones -->
+  <div class="bg-gray-50 p-4 mb-4 rounded shadow-md w-1/2">
+    <h3 class="text-xl font-semibold text-purple-600 mb-2">🔁 Support Becomes Resistance (and Vice Versa)</h3>
+    <p class="text-gray-700">When price breaks below a support level, that same level may turn into resistance on the way back up — and vice versa. These are called “flip zones.”</p>
+  </div>
+
+  <!-- Key Concept: False Breakouts -->
+  <div class="bg-gray-50 p-4 mb-4 rounded shadow-md w-1/2">
+    <h3 class="text-xl font-semibold text-yellow-600 mb-2">🚫 False Breakouts</h3>
+    <p class="text-gray-700">A false breakout occurs when price appears to break support or resistance but quickly reverses. Watching for volume confirmation or retests can help avoid getting trapped.</p>
+  </div>
+
+  <!-- Example Images -->
+  <ul class="list-disc list-inside text-gray-800 space-y-6 mt-8">
+    <li>
+      <p class="font-medium">Example 1: Price bounces multiple times from support (2-3 touches) — forms a support zone.</p>
+      <img src="https://www.bapital.com/media/double-bottom-pattern.jpg" alt="Support Example 1" class="my-4 rounded shadow block mx-auto"/>
+    </li>
+    <li>
+      <p class="font-medium">Example 2: Price rallies, builds support, then breaks to the upside — resistance breakout.</p>
+      <img src="https://wemastertrade.com/wp-content/uploads/2024/09/advantages-and-disadvantages-of-the-breakout-3.jpg" alt="Resistance Example 2" class="my-4 rounded shadow block mx-auto"/>
+    </li>
+    <li>
+      <p class="font-medium">Example 3: Breakout to the downside — former support becomes new resistance ("double top").</p>
+      <img src="https://www.forexschoolonline.com//wp-content/uploads/2019/07/double-top-pattern.png" alt="Breakout Example 3" class="my-4 rounded shadow block mx-auto"/>
+    </li>
+  </ul>
+</section>
+
+    <section id="volume" class="bg-white p-8 mb-12 rounded shadow">
+      <h2 class="text-3xl font-bold mb-4">📊 Volume Confirmation</h2>
+      <p class="text-gray-700 mb-6">Volume tells us the strength behind a price move. Higher volume confirms breakouts or breakdowns.</p>
+      <ol class="list-decimal list-inside text-gray-800 space-y-2">
+        <li>
+          Example 1: Price breaks resistance with high volume — valid breakout
+          <img src="https://tradethatswing.com/wp-content/uploads/2022/08/volume-increase-on-breakout.jpg" alt="Volume Example 1" class="my-4 rounded shadow block mx-auto"/>
+        </li>
+        <li>
+          Example 2: Price spikes down but volume is weak — possible fakeout
+          <img src="/mnt/data/A_2D_digital_educational_course_page_on_technical_.png" alt="Volume Example 2" class="my-4 rounded shadow block mx-auto"/>
+        </li>
+        <li>
+          Example 3: Volume builds up before breakout — accumulation phase
+          <img src="/mnt/data/A_2D_digital_educational_course_page_on_technical_.png" alt="Volume Example 3" class="my-4 rounded shadow block mx-auto"/>
+        </li>
+      </ol>
+    </section>
+
+    <section id="candlesticks" class="bg-white p-8 mb-12 rounded shadow">
+      <h2 class="text-3xl font-bold mb-4">🕯️ Candlestick Patterns</h2>
+      <p class="text-gray-700 mb-6">These patterns help predict short-term direction in the market.</p>
+      <ul class="list-disc list-inside text-gray-800 space-y-2">
+        <li>
+          Hammer: Bullish reversal after a downtrend
+          <img src="/mnt/data/A_2D_digital_educational_course_page_on_technical_.png" alt="Hammer Example" class="my-4 rounded shadow"/>
+        </li>
+        <li>
+          Bearish Engulfing: Signals potential trend reversal downward
+          <img src="/mnt/data/A_2D_digital_educational_course_page_on_technical_.png" alt="Bearish Engulfing Example" class="my-4 rounded shadow"/>
+        </li>
+        <li>
+          Doji: Indicates indecision — watch next candle for confirmation
+          <img src="/mnt/data/A_2D_digital_educational_course_page_on_technical_.png" alt="Doji Example" class="my-4 rounded shadow"/>
+        </li>
+      </ul>
+    </section>
+
+    <footer class="text-center mt-16 text-sm text-gray-500">
+      &copy; 2025 Chris Walker. All rights reserved.
+    </footer>
+
+    <!-- scripts -->
+    <script src="dropdown.js"></script>
+    <script src="sidebar.js"></script>
+    <script src="toggle.js"></script>
+    <script src="accordion.js"></script>
+  </main>
+</body>
+</html>

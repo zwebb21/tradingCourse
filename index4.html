@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+<style>
+
+body{text-align: center;}
+
+
+.bookclass {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;              /* Allows it to wrap nicely on small screens */
+    gap: 25px;
+    margin: 50px auto;            /* ← This centers it horizontally AND gives top margin */
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 45%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    max-height: 45%;
+}
+
+
+.bookclass h2 {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+#reveal{
+    font-size: xx-large;
+    font-weight: bolder;
+    font-style: italic;
+    transition-duration: 0.5s;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;              /* Allows it to wrap nicely on small screens */
+    gap: 25px;
+    margin: 50px auto;            /* ← This centers it horizontally AND gives top margin */
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 45%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    max-height: 45%;
+        background-color: #ccc;
+        color: black;
+}
+
+
+</style>
+
+
+</head>
+<body>
+
+
+
+
+
+<div class="bookclass">
+    <h2>This is working</h2>
+    <h2 id="revealTrigger">This is not working </h2>
+    <h2>CheckOut </h2>
+
+
+    <h2>This is working</h2>
+    <h2 id="revealTrigger">This is not working </h2>
+    <h2>CheckOut </h2>
+
+
+</div>
+
+
+
+<div id="reveal" style="display: none;">
+
+<p>Welcome to our store if you see this message. congrats you have access</p>
+
+
+
+</div>
+
+<!-- this is where the srcript tag is. -->
+
+    <script src="script.js"> 
+    </script>
+
+
+
+
+
+
+</body>
+</html>

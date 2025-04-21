@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NASA Picture of the Day</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background-color: #0b0c10;
+      color: #fff;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    img, iframe {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+
+    #explanation {
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    input[type="date"] {
+      padding: 10px;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #1f2833;
+      color: #66fcf1;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a29e;
+    }
+  </style>
+</head>
+<body>
+  <h1>🚀 NASA Picture of the Day</h1>
+
+  <input type="date" id="datePicker">
+  <button onclick="getPhoto()">Get Photo</button>
+
+  <h2 id="title"></h2>
+  <div id="media"></div>
+  <p id="explanation"></p>
+
+  <script>
+    const apiKey = 'DEMO_KEY'; // Replace with your NASA API key if you get one
+
+    function getPhoto() {
+      const date = document.getElementById('datePicker').value;
+      const url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}${date ? `&date=${date}` : ''}`;
+
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('title').textContent = data.title;
+          document.getElementById('explanation').textContent = data.explanation;
+
+          const mediaContainer = document.getElementById('media');
+          mediaContainer.innerHTML = '';
+
+          if (data.media_type === 'image') {
+            const img = document.createElement('img');
+            img.src = data.url;
+            mediaContainer.appendChild(img);
+          } else if (data.media_type === 'video') {
+            const iframe = document.createElement('iframe');
+            iframe.src = data.url;
+            iframe.width = "560";
+            iframe.height = "315";
+            iframe.frameBorder = "0";
+            iframe.allow = "autoplay; encrypted-media";
+            mediaContainer.appendChild(iframe);
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          alert('Something went wrong fetching the NASA image.');
+        });
+    }
+
+    // Load today's image on page load
+    window.onload = getPhoto;
+  </script>
+</body>
+</html>
