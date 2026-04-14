@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NASA Picture of the Day</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background-color: #0b0c10;
+      color: #fff;
+      padding: 20px;
+    }
+
+
+#text{
+  /* manages the help info text
+  
+  sets the width and line height*/
+  max-width: 50%;
+  margin: 20px auto;
+  line-height: 4.2em;
+  background-color: #26384f7a;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    img, iframe {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+
+    #explanation {
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    #status {
+      margin-top: 10px;
+      color: #f7d794;
+      min-height: 1.2em;
+    }
+
+    input[type="date"] {
+      padding: 10px;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #1f2833;
+      color: #66fcf1;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a29e;
+    }
+  </style>
+</head>
+<body>
+  <h1>🚀 NASA Picture of the Day</h1>
+
+  <input type="date" id="datePicker">
+  <button id="loadBtn" type="button">Get Photo</button>
+
+  <h2 id="title"></h2>
+  <div id="media"></div>
+  <p id="status"></p>
+  <p id="explanation"></p>
+<p id="text">## How to Use
+
+  This app connects to NASA’s Astronomy Picture of the Day (APOD) API to display daily space images.
+  
+  - On load, the app shows today’s featured image from NASA
+  - Use the date selector to choose a specific day
+  - The app will fetch and display the image provided by NASA for that date, along with its details
+  
+  Simple, fast, and built to demonstrate API integration and dynamic data rendering.</p>
+  <script>
+    const apiKey = 'DEMO_KEY'; // Replace with your NASA API key if you get one
+    const APOD_START = '1995-06-16';
+
+    function getTodayISODate() {
+      return new Date().toISOString().split('T')[0];
+    }
+
+    function setStatus(message) {
+      document.getElementById('status').textContent = message || '';
+    }
+
+    function clearOutput() {
+      document.getElementById('title').textContent = '';
+      document.getElementById('explanation').textContent = '';
+      document.getElementById('media').innerHTML = '';
+    }
+
+    function renderFallback() {
+      const mediaContainer = document.getElementById('media');
+      mediaContainer.innerHTML = '';
+      const img = document.createElement('img');
+      img.src = 'https://apod.nasa.gov/apod/image/1901/IC1805_HaLRGB_MPCC1024.jpg';
+      img.alt = 'Fallback NASA APOD image';
+      mediaContainer.appendChild(img);
+    }
+
+    async function getPhoto() {
+      const date = document.getElementById('datePicker').value;
+      const params = new URLSearchParams({ api_key: apiKey });
+      if (date) params.set('date', date);
+
+      const url = `https://api.nasa.gov/planetary/apod?${params.toString()}`;
+
+      clearOutput();
+      setStatus('Loading NASA image...');
+
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (!res.ok || data.error) {
+          throw new Error(data.error?.message || data.msg || `Request failed (${res.status})`);
+        }
+
+        document.getElementById('title').textContent = data.title || 'NASA APOD';
+        document.getElementById('explanation').textContent = data.explanation || '';
+
+        const mediaContainer = document.getElementById('media');
+        mediaContainer.innerHTML = '';
+
+        if (data.media_type === 'image') {
+          const img = document.createElement('img');
+          img.src = data.hdurl || data.url;
+          img.alt = data.title || 'NASA APOD image';
+          mediaContainer.appendChild(img);
+        } else if (data.media_type === 'video') {
+          const iframe = document.createElement('iframe');
+          iframe.src = data.url;
+          iframe.width = '560';
+          iframe.height = '315';
+          iframe.frameBorder = '0';
+          iframe.allow = 'autoplay; encrypted-media';
+          iframe.allowFullscreen = true;
+          mediaContainer.appendChild(iframe);
+        } else {
+          throw new Error('Unsupported media type from NASA APOD API.');
+        }
+
+        setStatus('');
+      } catch (err) {
+        console.error(err);
+        document.getElementById('title').textContent = 'Could not load APOD right now';
+        document.getElementById('explanation').textContent =
+          'If you opened this file directly, run it from a local server (not file://). Example: python3 -m http.server 5500';
+        setStatus(`Error: ${err.message}`);
+        renderFallback();
+      }
+    }
+
+    window.onload = function () {
+      const picker = document.getElementById('datePicker');
+      const today = getTodayISODate();
+      picker.min = APOD_START;
+      picker.max = today;
+      picker.value = today;
+
+      document.getElementById('loadBtn').addEventListener('click', getPhoto);
+      getPhoto();
+    };
+  </script>
+</body>
+</html>
