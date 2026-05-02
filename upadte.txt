@@ -1,0 +1,11 @@
+#april 13 2026 - 
+change file name of nasa api + pokemon api 
+
+
+
+#:style the page so that it look more static.  
+#: 
+#;
+
+#may 2 2026 - adding the real frame and controls to our api project to make it more 
+realistic to the actual device from the tv show. 
