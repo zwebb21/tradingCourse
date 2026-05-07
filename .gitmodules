@@ -1,0 +1,3 @@
+[submodule "pokedex-app"]
+	path = pokedex-app
+	url = https://github.com/zwebb21/pokedex-app.git
