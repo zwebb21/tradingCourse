@@ -1,0 +1,101 @@
+/* Prevent sideways scrolling */
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Helps flex children shrink instead of forcing overflow */
+main {
+  min-width: 0;
+}
+
+/* Responsive YouTube video */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #000;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Keep your video rounded */
+#video-container {
+  border-radius: 24px;
+}
+
+/* Responsive TradingView chart */
+.chart-wrapper {
+  width: 100%;
+  height: 400px;
+}
+
+.chart-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Make sure images and iframes never overflow */
+img,
+iframe {
+  max-width: 100%;
+}
+
+/* Locked card blur effect */
+.blur-card {
+  filter: blur(4px);
+}
+
+.blur-card.visible {
+  filter: blur(0);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smaller screen fixes */
+@media (max-width: 1024px) {
+  .chart-wrapper {
+    height: 360px;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .video-wrapper {
+    border-radius: 16px;
+  }
+
+  #video-container {
+    border-radius: 16px;
+  }
+
+  .chart-wrapper {
+    height: 320px;
+  }
+
+  #sidebar {
+    max-height: 80vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart-wrapper {
+    height: 280px;
+  }
+}

@@ -3,49 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Learn Trading with Zarius</title>
+  <title>Trading Course | Zarius </title>
+  <link rel="stylesheet" href="course.css"> <!--  coursepage-->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <style>
-
-
-
-    html {
-      scroll-behavior: smooth;
-    }
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-
-    #btn-course{
-    font-size: xx-large;
-  font-weight: 800;
-  background-color: gold;
-  border: 2px solid black;
-  border-radius: 10px;
-}
-  </style>
+  
 </head>
 <body class="bg-white text-gray-800">
 
   <header class="p-5 bg-yellow-400 text-center text-2xl font-bold shadow-lg">
-    Learn Trading with Zarius
+    Learn Investing and Trading 
   </header>
 
   <!-- Section 1 -->
   <section class="p-10 text-center fade-in">
     <div class="max-w-xl mx-auto">
-      <h2 class="text-3xl font-bold mb-4">Start From Scratch</h2>
+      <h2 class="text-3xl font-bold mb-4">Start From Scratch | Learning Type</h2>
       <p class="text-lg">
         This course is built for true beginners. You don’t need prior experience—just the motivation to learn and grow. I’ll guide you step-by-step through the basics in a simple and visual way.
       </p>
-
 
       <div class="div mt-5 p-4">
           <p id="btn-course" class="mt-5 p-2"> <a href="course.html" target="_blank">View Free Version Of Course</a></p>
@@ -158,26 +133,8 @@
   </footer>
 
   <!-- Script for Fade-In -->
-  <script>
-    const faders = document.querySelectorAll('.fade-in');
-
-    const appearOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px"
-    };
-
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      });
-    }, appearOptions);
-
-    faders.forEach(fader => {
-      appearOnScroll.observe(fader);
-    });
-  </script>
+  
+  <script src="course.js"></script>
 
 </body>
 </html>
